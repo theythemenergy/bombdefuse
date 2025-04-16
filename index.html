@@ -1,47 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bomb Defuse Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    #game, #winScreen, #bombExplosion {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Bomb Game UI -->
-  <div id="bomb-ui">
-    <h1>💣 Bomb Defuse</h1>
-    <div class="bomb-container">
-      <img src="bomb.png" alt="Bomb" id="bomb-img">
-
-      <!-- Secret Blue Button on the Bomb -->
-      <button id="secret-switch"></button>
-    </div>
-    <div class="wires">
-      <button class="wire">Red Wire</button>
-      <button class="wire">Green Wire</button>
-      <button class="wire">Yellow Wire</button>
-    </div>
+  <!-- Game Screen -->
+  <div id="game">
+    <h1>Defuse the Bomb!</h1>
+    <p>Choose the correct wire to cut!</p>
+    <button id="yellowWire">Yellow Wire</button>
+    <button id="blueWire">Blue Wire</button>
+    <button id="redWire">Red Wire</button>
   </div>
 
-  <!-- Hidden Chat App UI -->
-  <div id="chat-ui" class="hidden">
-    <h2>💬 Secret Chat</h2>
-
-    <div id="auth-section">
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Password">
-      <button onclick="register()">Register</button>
-      <button onclick="login()">Login</button>
-    </div>
-
-    <div id="chat-section" class="hidden">
-      <div id="messages"></div>
-      <input type="text" id="msgInput" placeholder="Type a message">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-
-    <button onclick="goBack()">🔙 Back to Bomb</button>
+  <!-- Winning Screen -->
+  <div id="winScreen">
+    <h1>Congratulations, You Won!</h1>
+    <p>You defused the bomb successfully!</p>
   </div>
 
-  <script src="scripts.js"></script>
+  <!-- Bomb Explosion -->
+  <div id="bombExplosion">
+    <h1>BOOM!</h1>
+    <p>The bomb exploded!</p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
