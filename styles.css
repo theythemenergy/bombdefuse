@@ -1,62 +1,105 @@
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+* {
     margin: 0;
     padding: 0;
-    background-color: #222;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .game-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
+/* Header and Game Title */
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Wire Buttons */
 .buttons {
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
 }
 
 .button {
-    font-size: 20px;
-    padding: 15px 30px;
-    margin: 10px;
+    font-size: 1.2em;
+    padding: 15px 25px;
     background-color: #444;
-    border: none;
+    border: 2px solid #333;
     color: white;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
     background-color: #666;
+    transform: scale(1.1);
+}
+
+/* Explosion and Trophy */
+.explosion, .trophy {
+    display: none;
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
 }
 
 .explosion {
-    display: none;
-    width: 100%;
-    height: 400px;
-    background-image: url('https://example.com/explosion.png'); /* Replace with your explosion image URL */
+    background: url('https://via.placeholder.com/600x200/ff0000/ffffff?text=BOOM') no-repeat center center;
     background-size: cover;
-    margin-top: 20px;
 }
 
 .trophy {
-    display: none;
-    width: 100px;
-    height: 100px;
-    background-image: url('https://example.com/trophy.png'); /* Replace with your trophy image URL */
-    background-size: cover;
-    margin-top: 20px;
+    background: url('https://via.placeholder.com/100x100/gold/ffffff?text=Trophy') no-repeat center center;
+    background-size: contain;
 }
 
+/* Hidden Secret Button */
 .hidden-button {
+    display: none;
     position: absolute;
-    left: -9999px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+.hidden-button:hover {
+    background-color: #0073e6;
+}
+
+/* Chat Interface */
 .chat-interface {
     display: none;
     position: fixed;
@@ -73,8 +116,14 @@ body {
 .chat-signin {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-top: 20%;
+}
+
+.chat-signin h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
 }
 
 .chat-signin input {
@@ -82,13 +131,20 @@ body {
     margin: 10px;
     border: none;
     border-radius: 5px;
+    width: 300px;
+    font-size: 1em;
 }
 
 .chat-signin button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #7289da;
     border: none;
-    color: white;
     border-radius: 5px;
+    color: white;
+    font-size: 1.1em;
     cursor: pointer;
+}
+
+.chat-signin button:hover {
+    background-color: #5b6eae;
 }
