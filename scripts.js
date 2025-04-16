@@ -1,100 +1,56 @@
-// UI Elements
-const bombUI = document.getElementById('bomb-ui');
-const chatUI = document.getElementById('chat-ui');
-const wires = document.querySelectorAll('.wire');
-const secretSwitch = document.getElementById('secret-switch');
-const authSection = document.getElementById('auth-section');
-const chatSection = document.getElementById('chat-section');
-const messages = document.getElementById('messages');
-const msgInput = document.getElementById('msgInput');
+// Getting references to the elements
+const explosion = document.getElementById('explosion');
+const trophy = document.getElementById('trophy');
+const secretButton = document.getElementById('secret-button');
+const chatInterface = document.getElementById('chat-interface');
 
-// State Tracking
-let isBombDefused = false;
-let currentUser = null;
+// Game Logic for Bomb Defuse
+document.getElementById('yellow').onclick = () => {
+    triggerExplosion(); // Wrong wire (Yellow)
+};
 
-// Bomb Defuse Logic
-wires.forEach((wire, index) => {
-  wire.addEventListener('click', () => {
-    if (index === 2) {  // Yellow wire is correct
-      isBombDefused = true;
-      alert("You defused the bomb! Now you can access the secret chat.");
-      showChatUI(); // Show chat UI if bomb is defused
+document.getElementById('blue').onclick = () => {
+    triggerTrophy(); // Correct wire (Blue)
+};
+
+document.getElementById('red').onclick = () => {
+    triggerExplosion(); // Wrong wire (Red)
+};
+
+// Trigger Explosion Function
+function triggerExplosion() {
+    explosion.style.display = 'block'; // Show explosion
+    setTimeout(() => {
+        alert("Boom! You picked the wrong wire. Game Over.");
+        location.reload(); // Reload the page after a short delay
+    }, 2000); // Wait 2 seconds before reloading
+}
+
+// Trigger Trophy Function
+function triggerTrophy() {
+    trophy.style.display = 'block'; // Show trophy
+    setTimeout(() => {
+        alert("You won! Great job!");
+        location.reload(); // Reload the page after a short delay
+    }, 2000); // Wait 2 seconds before reloading
+}
+
+// Secret Button Logic
+secretButton.onclick = () => {
+    chatInterface.style.display = 'block'; // Show the chat interface
+};
+
+// Chat Interface Logic (for the simulated Discord-like page)
+document.getElementById('signin-btn').onclick = () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username && password) {
+        alert("Signed in successfully!");
+        // You can redirect to a chat room or dashboard here if needed
+        // For now, just show a simple message
+        chatInterface.innerHTML = `<h2>Welcome, ${username}!</h2><p>You are now logged into the chat.</p>`;
     } else {
-      alert("The bomb exploded! Try again.");
-      resetGame(); // Reset game after bomb explosion
+        alert("Please enter both a username and password.");
     }
-  });
-});
-
-// Secret Switch to Transition to Chat UI
-secretSwitch.addEventListener('click', () => {
-  if (isBombDefused) {
-    showChatUI(); // Transition to Chat UI after defusing the bomb
-  } else {
-    alert("You need to defuse the bomb first!");
-  }
-});
-
-// Show Chat UI
-function showChatUI() {
-  bombUI.style.display = 'none';
-  chatUI.classList.remove('hidden');
-  authSection.style.display = 'block';
-  chatSection.style.display = 'none';
-}
-
-// Handle Register
-function register() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  if (email && password) {
-    // Save user (for demo purposes, store in a simple variable)
-    currentUser = { email, password };
-    alert("Registered successfully!");
-    authSection.style.display = 'none';
-    chatSection.style.display = 'block';
-  } else {
-    alert("Please provide both email and password.");
-  }
-}
-
-// Handle Login
-function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  if (currentUser && currentUser.email === email && currentUser.password === password) {
-    alert("Logged in successfully!");
-    authSection.style.display = 'none';
-    chatSection.style.display = 'block';
-  } else {
-    alert("Invalid credentials. Please try again.");
-  }
-}
-
-// Send Message
-function sendMessage() {
-  const message = msgInput.value;
-  if (message) {
-    const newMessage = document.createElement('div');
-    newMessage.textContent = `${currentUser.email}: ${message}`;
-    messages.appendChild(newMessage);
-    msgInput.value = ''; // Clear input field after sending
-  } else {
-    alert("Please enter a message!");
-  }
-}
-
-// Go Back to Bomb Game
-function goBack() {
-  bombUI.style.display = 'block';
-  chatUI.classList.add('hidden');
-  resetGame(); // Reset game on going back
-}
-
-// Reset Bomb Game State
-function resetGame() {
-  isBombDefused = false;
-  wires.forEach((wire) => wire.disabled = false);  // Enable wire buttons again
-}
+};
