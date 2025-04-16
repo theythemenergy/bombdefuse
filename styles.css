@@ -1,129 +1,60 @@
 body {
   font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
   text-align: center;
-  margin: 0;
-  padding: 40px;
 }
 
-.bomb-container {
-  position: relative;
-  display: inline-block;
+#bomb-ui, #chat-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wires button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 #bomb-img {
-  width: 300px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
-/* Secret button: tiny blue dot */
-#secret-switch {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: blue;
-  border: none;
-  border-radius: 50%;
-  opacity: 0.6;
-  cursor: pointer;
-  z-index: 10;
-}
-
-/* Wire buttons */
-.wires button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  background-color: darkred;
-  cursor: pointer;
-}
-
-/* Hidden class */
 .hidden {
   display: none;
 }
 
-/* Chat UI styling */
-#chat-ui {
-  background: #f5f5f5;
-  color: black;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  margin: auto;
+#auth-section {
+  margin-top: 20px;
+}
+
+#chat-section {
+  display: none;
+  margin-top: 20px;
 }
 
 #messages {
-  background: #ddd;
-  height: 150px;
-  overflow-y: auto;
+  height: 200px;
+  width: 300px;
+  border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
-}
-⚙️ 3. scripts.js
-js
-Copy
-Edit
-const bombUI = document.getElementById('bomb-ui');
-const chatUI = document.getElementById('chat-ui');
-const secretBtn = document.getElementById('secret-switch');
-
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const msgInput = document.getElementById('msgInput');
-const messagesDiv = document.getElementById('messages');
-const authSection = document.getElementById('auth-section');
-const chatSection = document.getElementById('chat-section');
-
-// Secret switch reveals chat
-secretBtn.addEventListener('click', () => {
-  bombUI.classList.add('hidden');
-  chatUI.classList.remove('hidden');
-});
-
-// Go back to bomb
-function goBack() {
-  chatUI.classList.add('hidden');
-  bombUI.classList.remove('hidden');
+  overflow-y: auto;
 }
 
-// Fake user database (for demo purposes)
-let fakeUser = null;
-
-function register() {
-  const email = emailInput.value;
-  const pass = passwordInput.value;
-  if (email && pass) {
-    fakeUser = { email, pass };
-    alert("Registered!");
-  } else {
-    alert("Fill in both fields!");
-  }
+#msgInput {
+  width: 250px;
+  padding: 10px;
 }
 
-function login() {
-  const email = emailInput.value;
-  const pass = passwordInput.value;
-  if (fakeUser && fakeUser.email === email && fakeUser.pass === pass) {
-    authSection.classList.add('hidden');
-    chatSection.classList.remove('hidden');
-    alert("Logged in!");
-  } else {
-    alert("Wrong email or password.");
-  }
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-function sendMessage() {
-  const text = msgInput.value;
-  if (text) {
-    messagesDiv.innerHTML += `<p><strong>You:</strong> ${text}</p>`;
-    msgInput.value = '';
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
+button:hover {
+  background-color: #45a049;
 }
