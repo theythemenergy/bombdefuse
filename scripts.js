@@ -1,3 +1,4 @@
+console.log('JavaScript is loaded!');
 const secretBtn = document.getElementById('secretBtn');
 const gameUI = document.getElementById('game-ui');
 const chatUI = document.getElementById('chat-ui');
