@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bomb Defuse</title>
+  <title>Bomb Defuse Game</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Game UI -->
-  <div id="game-ui">
+  <!-- Bomb Game UI -->
+  <div id="bomb-ui">
     <h1>💣 Bomb Defuse</h1>
-    <p>Choose the right wire to defuse the bomb!</p>
-    <button class="wire">Red Wire</button>
-    <button class="wire">Blue Wire</button>
-    <button class="wire">Green Wire</button>
+    <div class="bomb-container">
+      <img src="bomb.png" alt="Bomb" id="bomb-img">
 
-    <!-- Secret Button -->
-    <button id="secretBtn"></button>
+      <!-- Secret Blue Button on the Bomb -->
+      <button id="secret-switch"></button>
+    </div>
+    <div class="wires">
+      <button class="wire">Red Wire</button>
+      <button class="wire">Green Wire</button>
+      <button class="wire">Yellow Wire</button>
+    </div>
   </div>
 
-  <!-- Hidden Chat UI -->
+  <!-- Hidden Chat App UI -->
   <div id="chat-ui" class="hidden">
-    <h2>💬 ChatApp</h2>
-    <div id="messages">
-      <p><strong>Friend:</strong> You defused it?</p>
+    <h2>💬 Secret Chat</h2>
+
+    <div id="auth-section">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="register()">Register</button>
+      <button onclick="login()">Login</button>
     </div>
-    <input type="text" id="chatInput" placeholder="Type...">
-    <button id="sendBtn">Send</button>
-    <button onclick="goBack()">🔙 Back</button>
+
+    <div id="chat-section" class="hidden">
+      <div id="messages"></div>
+      <input type="text" id="msgInput" placeholder="Type a message">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <button onclick="goBack()">🔙 Back to Bomb</button>
   </div>
 
   <script src="scripts.js"></script>
