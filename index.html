@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bomb Defuse Game</title>
-  <style>
-    #game, #winScreen, #bombExplosion {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomb Defuse Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="game-container">
+        <h1>Bomb Defuse Game</h1>
+        <div class="buttons">
+            <button class="button" id="yellow">Yellow Wire</button>
+            <button class="button" id="blue">Blue Wire</button>
+            <button class="button" id="red">Red Wire</button>
+        </div>
 
-  <!-- Game Screen -->
-  <div id="game">
-    <h1>Defuse the Bomb!</h1>
-    <p>Choose the correct wire to cut!</p>
-    <button id="yellowWire">Yellow Wire</button>
-    <button id="blueWire">Blue Wire</button>
-    <button id="redWire">Red Wire</button>
-  </div>
+        <!-- Explosion and Trophy -->
+        <div class="explosion" id="explosion"></div>
+        <div class="trophy" id="trophy"></div>
 
-  <!-- Winning Screen -->
-  <div id="winScreen">
-    <h1>Congratulations, You Won!</h1>
-    <p>You defused the bomb successfully!</p>
-  </div>
+        <!-- Secret Button (Hidden initially) -->
+        <button class="hidden-button" id="secret-button" style="background-color: blue;">Click Me</button>
+    </div>
 
-  <!-- Bomb Explosion -->
-  <div id="bombExplosion">
-    <h1>BOOM!</h1>
-    <p>The bomb exploded!</p>
-  </div>
+    <!-- Chat Interface -->
+    <div class="chat-interface" id="chat-interface">
+        <div class="chat-signin">
+            <h2>Sign In</h2>
+            <input type="text" id="username" placeholder="Username" />
+            <input type="password" id="password" placeholder="Password" />
+            <button id="signin-btn">Sign In</button>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
